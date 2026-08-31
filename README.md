@@ -1,5 +1,6 @@
 # ✅ Proyecto: Ecommerce Technology — Admin Backoffice
 Desarrollado por **Camilo Montero**
+<img width="1678" height="967" alt="image" src="https://github.com/user-attachments/assets/1b80aedf-4884-493c-9da1-48d00aea027c" />
 
 ---
 
