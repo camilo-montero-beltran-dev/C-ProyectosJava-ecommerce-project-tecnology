@@ -1,6 +1,15 @@
 # ✅ Proyecto: Ecommerce Technology — Admin Backoffice
 Desarrollado por **Camilo Montero**
-<img width="1678" height="967" alt="image" src="https://github.com/user-attachments/assets/1b80aedf-4884-493c-9da1-48d00aea027c" />
+<img width="1872" height="907" alt="image" src="https://github.com/user-attachments/assets/abf6f077-0b8e-4805-bc84-6e5da91657dd" />
+
+<img width="1886" height="911" alt="image" src="https://github.com/user-attachments/assets/0f81c316-a7fa-446d-a5cd-864f30349059" />
+
+<img width="1877" height="907" alt="image" src="https://github.com/user-attachments/assets/70d835c3-acc1-4141-b584-095bf8729d37" />
+
+
+<img width="1257" height="997" alt="image" src="https://github.com/user-attachments/assets/2255728f-4bfe-47de-a524-fcdfc60d48f9" />
+
+<img width="946" height="1051" alt="bd" src="https://github.com/user-attachments/assets/7d75fc16-e5d7-41b2-a364-ee09e58ace27" />
 
 ---
 
@@ -8,6 +17,10 @@ Desarrollado por **Camilo Montero**
 API REST de administración (backoffice), compuesta por un backend en Spring Boot, una interfaz web en Angular/TypeScript, y una base de datos MySQL. Incluye almacenamiento de imágenes en Amazon S3.
 
 Este repositorio es el **panel de gestión** del ecosistema: administra los datos maestros del negocio (productos, marcas, categorías, inventario, usuarios y roles). La tienda de cara al cliente (catálogo público, carrito, checkout y órdenes) se construirá como una **API de ecommerce independiente**, que consumirá este backoffice como fuente de datos del catálogo — ver [Próximas mejoras](#-próximas-mejoras).
+
+
+![Uploading image.png…]()
+
 
 ---
 
