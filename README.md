@@ -7,11 +7,7 @@ Desarrollado por **Camilo Montero**
 
 <br>
 
-Diagrama relacional
 
-<img width="946" height="1051" alt="bd" src="https://github.com/user-attachments/assets/7d75fc16-e5d7-41b2-a364-ee09e58ace27" />
-
-<br>
 
 ---
 
@@ -21,8 +17,14 @@ API REST de administración (backoffice), compuesta por un backend en Spring Boo
 Este repositorio es el **panel de gestión** del ecosistema: administra los datos maestros del negocio (productos, marcas, categorías, inventario, usuarios y roles). La tienda de cara al cliente (catálogo público, carrito, checkout y órdenes) se construirá como una **API de ecommerce independiente**, que consumirá este backoffice como fuente de datos del catálogo — ver [Próximas mejoras](#-próximas-mejoras).
 
 
+
 ![Uploading image.png…]()
 
+Diagrama relacional
+
+<img width="946" height="1051" alt="bd" src="https://github.com/user-attachments/assets/7d75fc16-e5d7-41b2-a364-ee09e58ace27" />
+
+<br>
 
 ---
 
