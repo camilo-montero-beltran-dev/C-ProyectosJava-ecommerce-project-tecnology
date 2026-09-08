@@ -42,6 +42,9 @@ Diagrama relacional
 
 ---
 
+<img width="1877" height="916" alt="image" src="https://github.com/user-attachments/assets/634cc0d5-dc8c-4a35-aaf2-7937d2f947de" />
+
+
 ## 📁 Estructura del repositorio
 ```
 ecommerce-tecnology/
