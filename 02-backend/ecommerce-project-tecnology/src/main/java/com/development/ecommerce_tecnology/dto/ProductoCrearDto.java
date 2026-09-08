@@ -13,6 +13,7 @@ public class ProductoCrearDto {
     private String nombreProducto;
     private String descripcion;
     private Double precio;
+    private Boolean activo;
     private LocalDateTime fechaRegistro;
     private LocalDateTime fechaActualizacion;
 
@@ -63,6 +64,14 @@ public class ProductoCrearDto {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public LocalDateTime getFechaRegistro() {

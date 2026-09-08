@@ -35,12 +35,13 @@ public class ProductoMapper {
         // Crear nuevo DTO vacio
         ProductoDto productoDto = new ProductoDto();
 
-        // Copiar atibutos basicos del producto// Copiar atibutos basicos del producto
+        // Copiar atributos basicos del producto// Copiar atibutos basicos del producto
         productoDto.setIdProducto(producto.getIdProducto());
         productoDto.setCodigoProducto(producto.getCodigoProducto());
         productoDto.setNombreProducto(producto.getNombreProducto());
         productoDto.setDescripcion(producto.getDescripcion());
         productoDto.setPrecio(producto.getPrecio());
+        productoDto.setActivo(producto.getActivo());
         productoDto.setFechaRegistro(producto.getFechaRegistro());
         productoDto.setFechaActualizacion(producto.getFechaActualizacion());
         productoDto.setStock(producto.getStock());

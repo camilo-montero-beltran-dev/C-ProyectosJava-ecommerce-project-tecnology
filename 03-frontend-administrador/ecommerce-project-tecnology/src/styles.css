@@ -1,89 +1,38 @@
-*, *::before, *::after{
+*, 
+*::before, 
+*::after{
     box-sizing: border-box;
 }
 
-html, body{
+html, 
+body{
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-/* ============================
-   Estilos de modal
-   ============================ */
-
-.modal{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-.modal-content{
-    background-color: #fff;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-
+    min-height: 100%;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 
-/* ============================
-   Estilos de la barra superior
-   ============================ */
+:root{
+    --bg-main: #0f1115;
+    --bg-sidebar: #011126;
+    --bg-card: #181b21;
+    --bg-hover: #20242c;
+    
+    --border: #2a2e37;
 
-.banner {
-width: 100%; /* ocupa todo ell ancho de la pantalla*/
-background-color:  #011126 ;
-display: flex; /*Aplica flexbox para organizar los elementos dentro de la barra*/
-align-items: center; /* Centra verticalmente los elementos*/
-justify-content: space-between; /* logo a la izquierda, sesión a la derecha*/
-padding: 0 30px;
-color: #c8e2fd;
+    --text-primary: #f5f7fa;
+    --text-secondary: #9299a6;
+    
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
 
-   }
-
-.logo{
-
-    width: 140px;
-    height:auto;
-
-   }
-
-/* ============================
-   Contenedor de sesión
-   ============================ */
-
-.sesion{
-
-display: flex; /*Aplica flexbox para colocar los botones en fila*/
-gap: 15px; /* Define un espacio de 15 px entre los botones*/
-align-items: center;
-
-}
-
-
-.btn-fijo-sesion{
-    min-width: 140px;
-    text-align: center;
-}
-
-/*Botones dentro del contenedor de sesión*/
-.sesion button{
-    border:none;
-    padding: 10px 15px; /* Espaciado interno de 10px vertical y 15px horizontal*/
-    font-weight: bold;
-    font-size: 14PX;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+   
 }
 
 /* ============================
@@ -93,7 +42,7 @@ align-items: center;
 .body{
  
     background-color: #c8e2fd;
-    min-height: augit; 
+    min-height: 100vh; 
     max-width: 100%;
     width: 100%;
     position: relative;
@@ -103,104 +52,795 @@ align-items: center;
 
 
 /* ============================
-   Contenedor detalles
+   LAYOUT
    ============================ */
-
-.detalles-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border-radius: 12px;
-    background: #f9f9f9; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.detalles-titulo{
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-}
-
-.detalles-header{
-
+   
+.contenedor {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    min-height: 100vh;
+    background: var(--bg-main);
+    border:  none; ;
+    gap: 0px; 
 }
 
-.detalles-imagen{
-
-    width: auto;
-    height: 120px;
-    border-radius: 10%;
-    object-fit: cover;
-    border: 2px solid #007bff; 
-}
-
-.detalles-imagen-grande{
-    width: 480px;
-    height: auto;
-}
-
-.detalles-principales{
-    margin: 0.3rem;
-    font-size: 0.95rem;
-}
-
-.detalles-especificos{
-    margin-top: 1.5rem;
-
-}
-
-
-
-.detalles-especificos h3{
-    margin-top: 0.8rem;
-    color: #007bff;
-}
-
-
-.detalles-especificos p {
-    margin: 0.4rem 0;
-    padding: 0.3rem 0.5rem;
-    border-bottom: 1px solid #ddd;
-}
 
 /* ============================
-   Tabla
+   SIDERBAR
    ============================ */
 
-table{
- width: 95%;
- margin: 20px auto;
- border-collapse: collapse;
- font-family: Arial, Helvetica, sans-serif;
- font-size: 12px;
- box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
- 
+.aside-menu{
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+
+    min-height: 100vh;
+
+    background-color:  var(--bg-sidebar); ;
+    color: var(--text-primary);
+
+    padding: 20px 14px;
+
+    border-right:  1px solid var(--border);
+    
+    box-shadow: none;
+  
 }
 
-.tabla-encabezado{
+.aside-menu ul{
+
+    list-style: none;
+    padding: 0;
+    margin:0;
+}
+
+.aside-menu li{
+margin: 3px 0;
+background-color: transparent;   ;
+
+
+}
+
+.aside-menu li a{
+    
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: #04346e;
+
+    height: 40px;
+    padding: 0px 12px;
+
+    border-radius: 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-decoration: none;
+   
+    transition: all 0.2s ease;
+}
+
+.aside-menu li a:hover{
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+
+.aside-menu li a.active{
+    background-color: #0650b8;
+    color: #ffffff;
+}
+
+
+.menu-title{
+
+    margin: 12px 0 6px 0;
+    
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    color: #707785;
+    
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+  
+}
+
+
+/* ============================
+   HEADER
+   ============================ */
+
+.banner {
+    
+    /** width: 100%; /* ocupa todo ell ancho de la pantalla*/
+
+    background: var(--bg-main);
+    
+    display: flex; /*Aplica flexbox para organizar los elementos dentro de la barra*/
+    
+    justify-content: space-between; /* logo a la izquierda, sesión a la derecha*/
+    
+    padding: 10px 24px;
+    
+    color: var(--text-primary);
+
+   }
+
+.logo{
+
+    width: 140px;
+   }
+
+/* ============================
+   CONTENT   
+   ============================ */
+
+main {
+    flex: 1; /* Ocupa el espacio restante del contenedor flex*/
+    min-height: 0; /* Permite que el contenido se ajuste al tamaño del contenedor*/
+    padding: 28px; /* Espaciado interno de 28px alrededor del contenido*/
+}
+
+
+
+/* ============================
+   TABLE HEADER   
+   ============================ */
+
+.tabla-encabezado{
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+
     padding: 12px 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15)
+    margin-bottom: 24px;
+
 
 }
 
 .tabla-encabezado h2{
-    color: white;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    margin: 0;
+    color: var(--bg-card);
     font-size: 22px;
     font-weight: bold;
-    margin: 0;
-    letter-spacing: 1px;
+    letter-spacing: 0;
 }
+
+.tabla-encabezado .subtitulo {
+    grid-column: 1;
+    grid-row: 2;
+
+    margin: 5px 0 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.tabla-encabezado .btn-crear {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+}
+
+
+/* ============================
+   TABLE 
+   ============================ */
+
+table{
+ width: 95%;
+
+ margin: 20px auto;
+
+ border-collapse: separate;
+ border-spacing: 0;
+ 
+ 
+ background-color: var(--bg-card);
+
+ border: 1px solid var(--border); /* Borde de la tabla */
+ border-radius: 12px; /* Bordes redondeados para la tabla */
+
+ overflow: hidden; /* Oculta cualquier contenido que se desborde del borde redondeado */
+
+ box-shadow: none; /* Elimina la sombra de la tabla */
+
+ font-size: 14px; /* Tamaño de fuente para el contenido de la tabla */
+
+ 
+}
+
+th {
+    background: #15181e;
+
+    color: #858c99;
+
+    font-size: 11px;
+    font-weight: 700;
+    
+    text-transform: uppercase;
+    
+    letter-spacing: 0.5px;
+
+    padding: 14px 16px;
+
+    border-bottom: 1px solid var(--border); 
+    /* Borde inferior para separar el encabezado del contenido */
+}
+
+
+td{
+   
+    padding: 14px 16px;
+
+    color: var(--text-primary);
+
+    border-bottom: 1px solid var(--border); /* Borde inferior para separar las filas de datos */
+    border-left: none;
+    border-right: none;
+    
+}
+tbody tr {
+    transition: background .15s ease; /* Transición suave para el cambio de fondo al pasar el mouse */
+}
+
+tbody tr:hover{
+    background: var(--bg-hover);
+   
+}
+
+tbody tr:last-child td{
+    border-bottom: none; /* Elimina el borde inferior de la última fila */
+}
+
+
+
+/* ============================
+   IMAGEN PRODUCTO
+   ============================ */
+
+
+.listado-img{
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+    
+    border: 1px solid var(--border); /* Borde alrededor de la imagen */
+}
+
+
+/* ============================
+   BOTONES GUARDAR Y MODIFICA
+   ============================ */
+
+.btn-guardar {
+    min-width: 200px;
+    min-height: 42px;
+
+    background-color: #6366f1;
+    color: #ffffff;
+
+    border:none;
+    border-radius: 8px;
+    
+    font-size: 13px;
+    font-weight: 600;
+    
+    transition: background 0.2s ease, transform 0.15s ease; /* Transición suave para cambios de fondo y transformaciones */
+}
+
+.btn-guardar:hover {
+    background-color: #4f46e5; /* Cambio de color al pasar el mouse */
+    color: #ffffff !important; /* Asegura que el texto permanezca blanco al pasar el mouse */
+    transform: translateY(-1px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* ============================
+   BOTONES CREAR PRODUCTO Y CREAR CATEGORIA
+   ============================ */
+
+
+.btn-crear{
+    
+    min-width: 160px;
+    height: 40px;
+    
+    background: var(--primary);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: background 0.2s ease, transform 0.15s ease; /* Transición suave para cambios de fondo y transformaciones */
+    
+}
+
+.btn-crear:hover{
+    background: var(--primary-hover);
+    transform: translateY(-1px); /* Efecto de elevación al pasar el mouse */
+}
+
+
+
+/* ============================
+   BOTONES DE SESIÓN
+    ============================ */
+
+
+    .sesion{
+
+display: flex; /*Aplica flexbox para colocar los botones en fila*/
+gap: 15px; /* Define un espacio de 15 px entre los botones*/
+align-items: center;
+
+}
+
+/*Botones dentro del contenedor de sesión*/
+.sesion-button{
+    border:none;
+    padding: 10px 15px; /* Espaciado interno de 10px vertical y 15px horizontal*/
+    font-weight: bold;
+    font-size: 14PX;
+}
+
+
+.btn-fijo-sesion{
+    min-width: 140px;
+    height: 36px;
+
+    padding: 0 16px;
+
+    text-align: center;
+
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+
+/* ============================
+   BOTONES GENRALES  
+    ============================ */
+
+.btn-fijo{
+    
+    min-width: 100px;
+    height: 38px;
+
+    padding: 0 14px;
+
+    margin-right: 6px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: all .2s ease;
+    
+
+}
+
+
+
+
+/* ============================
+   FORMULARIOS
+   ============================ */
+
+
+/* Establece general del formulario*/
+.formulario {
+
+    max-width: 850px; /* limite en pantallas grandes*/
+    
+    margin: 30px auto;
+    padding: 28px;
+
+    background: var(--bg-card);
+
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Sombra para dar profundidad al formulario */
+    
+}
+
+
+.form-fieldset{
+    border: none;
+    padding: 0;
+    
+}
+
+.form-legend{
+    
+    display: block;
+    
+    width: 100%;
+
+    margin-bottom: 25px;
+    padding: 0;
+
+
+    background:transparent; 
+    
+    color: var(--text-primary);
+    
+    
+    border:none;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    text-align: left;
+}
+
+
+.formulario label{
+
+    display: block;
+    
+    margin-bottom: 7px;
+
+    color: #c9ced8;
+
+    font-size: 13px;
+
+    font-weight: 600;
+    
+}
+
+
+.formulario input,
+.formulario select {
+  
+    width: 100%;
+
+    min-height: 42px;
+
+    margin-bottom: 18px;
+
+    padding: 0 12px;
+
+    background: #111318;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    color: var(--text-primary);
+
+    outline: none;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.formulario input:focus,
+.formulario select:focus {  
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3); /* Sombra azul alrededor del input al enfocarlo */
+
+}
+
+
+/* ============================
+   MODAL
+   ============================ */
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.modal-content{
+   
+    width: 90%;
+    max-width: 420px;
+    
+    padding: 28px;
+    
+    background-color: #181b21;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+
+    color: var(--text-primary);
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 25px;
+}
+
+.modal-content button {
+    margin: 5px;
+}
+
+/* ============================
+   PAGINACIÓN
+   ============================ */
+
+.paginacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+    
+    margin-top: 24px;
+
+    color: var(--text-secondary);
+}
+
+/* ============================
+   PERFIL USUARIO
+   ============================ */
+
+
+   .perfil-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+   }
+
+
+/* ============================
+   CABECERA PERFIL   
+   ============================ */
+
+   .perfil-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 28px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    margin-bottom: 18px;
+   }
+
+   .perfil-identidad {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+   }
+   
+   .perfil-avatar {
+    width: 90px;
+    height: 90px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+    
+    border: 3px solid #6366f1;
+
+    background: #111318;
+
+}
+
+    .perfil-label {
+        
+        display:block;
+
+        margin-bottom: 5px;
+
+        color: #858c99;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        letter-spacing: 0.8em;
+
+    }
+
+    .perfil-header h2{
+        margin: 0;
+
+        color: var(--text-primary);
+
+        font-size: 15px;
+    }
+
+    .perfil-header p {
+        margin: 5px 0 0;
+
+        color: var(--text-secondary);
+
+        font-size: 14px;
+
+    }
+
+
+   /* ============================
+   INFORMACIÓN CUENTA  
+   ============================ */
+
+   .perfil-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+   }
+
+   .perfil-card{
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 20px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+}
+
+.perfil-card {
+
+    color: #858c99;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.6em;
+
+}
+
+.perfil-card strong{
+    color: var(--text-primary);
+
+    font-size: 15px;
+}
+
+.estado-activo {
+    color: #22c55e !important;
+}
+
+
+   /* ============================
+   DATOS PERSONALES  
+   ============================ */
+   
+   .perfil-seccion {
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+   }
+
+   .perfil-seccion-header {
+    
+    padding: 20px 24px;
+
+    border-bottom: 1px solid var(--border);
+
+   }
+
+   .perfil-seccion-header h3 {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 17px;
+   }
+
+     /* ============================
+   GRID DE DATOS 
+   ============================ */
+   
+   .datos-grid{
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+   }
+
+   .dato {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+   }
+
+   .dato:nth-child(odd){
+    border-right: 1px solid var(--border);
+   }
+
+   .dato span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #858c99;
+
+    font-size: 12px;
+   }
+
+   .dato strong {
+    color: var(--text-primary);
+
+    font-size: 14px;
+
+    font-weight: 500;
+   }
+
+     /* ============================
+   LOADING
+   ============================ */
+
+.loading {
+    padding: 40px;
+
+    color: var(--text-secondary);
+
+    text-align: center;
+}
+
+
+
+.subtitulo{
+    margin:5px 0 0;
+
+    color: var(--bg-cardr);
+
+    font-size: 13px;
+}
+
 
 
 .usuario-img{
@@ -214,18 +854,6 @@ table{
     transform: scale(1.3);
 }
 
-th {
-    text-transform: uppercase;
-    background-color: #04346e;
-    color: white;
-    padding: 8px;
-}
-
-th, td{
-    border: 1px solid hsl(213, 87%, 63%) ;
-    padding: 4px;
-    text-align: left; 
-}
 
 .img {
   width: 10%; 
@@ -233,51 +861,100 @@ th, td{
 }
 
 
-.btn-crear{
-    background-color: #04346e;
-    
-}
-
-.listado-img{
-
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-   .paginacion{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-
-
 /* ============================
-   Formularios
+   CONTENDDOR DETALLES
    ============================ */
 
-/* Establece general del formulario*/
+.detalles-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 28px;
+    border-radius: 12px;
+    background: var(--bg-card); 
+    border: 1px solid var(--border);
+    border-radius: 14px;
 
-.form-fieldset{
-    padding: 1rem;
-    border: 1px solid  hsl(213, 62%, 80%) ;
-    border-radius: .375rem;;
 }
 
-.form-legend{
+.detalles-titulo{
     
-    background-color:  #04346e ; 
-    font-size: 1.25rem;
-    color: white; 
-    font-weight: bold;
-    border: 1px solid  hsl(213, 62%, 80%) ;
-    padding: 20px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;  
+    margin-bottom: 28px;
+    color: #333;
+    font-size: 26px;
 }
+
+.detalles-header{
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+
+.detalles-imagen-grande{
+    width: 480px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+}
+
+.detalles-principales{
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    
+}
+
+.detalles-principales p{
+    margin: 10px 0;
+    color: var(--text-secondary);
+}
+
+
+.detalles-especificos {
+    padding: 20px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.detalles-especificos h3{
+    margin-top: 20px;
+    color: var(--text-primary);
+}
+
+.detalles-especificos p {
+    margin: 0.4rem 0;
+    color:var(--text-secondary);
+}
+
+.detalles-especificos strong,
+.detalles-principales strong {
+    color: var(--text-primary);
+}
+
+.detalles-imagen-especificaciones{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin: 5px 0 15px
+}
+ 
+
+
+
+
+
+
+
+
 
 .formulario-col{
     margin-bottom: 1rem;
@@ -291,146 +968,20 @@ th, td{
     }
 }
 
-.formulario {
-    border: 1px solid hsl(213, 87%, 63%) ;
-    max-width: 1000px; /* limite en pantallas grandes*/
-    width: auto; /* Se adapta al ancho disponible*/     
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9fa;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    
-}
 
-.formulario row{
+
+.formulario .row{
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
 }
 
 
-/* Etiquetas */
-.formulario label{
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-/*Input*/
-.formulario input,
-.formulario select {
-    border-color: hsl(213, 87%, 63%) ;
-    margin-bottom: 3px;
-}
-
 /*Mensaje error*/
 .formulario .error {
     font-size: 0.9rem;
     color: #dc3545;
 }
-
-.btn-guardar {
-    min-width: 200px;
-    background-color: #dc3545;
-    border:none;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.btn-guardar:hover {
-    background-color: #dbbd12;
-}
-
-
-/* ============================
-   Menú lateral
-   ============================ */
-
-.aside-menu{
-    width: 270px;
-    min-width: 270px;
-    max-width: 270px;
-    background-color:  #04346e ;/* Establece un fondo azul mas claro*/
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 10px;
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.aside-menu ul{
-
-    list-style: none;
-    padding: 0;
-    margin:0;
-}
-
-.aside-menu li{
-margin: 8px 0;
-background-color: #285692;
-
-
-}
-
-.aside-menu li a{
-    font-size: 14px;
-    text-decoration: none;
-    color: #ffffff;
-    display: block;
-    padding: 4px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.aside-menu li a:hover,
-.aside-menu li a.active{
-    background-color: #0650b8;
-    color: #ffffff;
-}
-
-li a.no-underline{
-    text-decoration: none;
-}
-
-.menu-title{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #ffffff;
-    padding: 10px 15px;
-    margin: 12px 0 6px 0;
-    border-left: 4px solid #1a73e8;
-    background-color: #011126;
-    width: 100%;
-    display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: default;
-    border-radius: 0px;
-    box-sizing: border-box;
-}
-
-.contenedor {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    border:  2px solid #04346e ;
-
-    
-}
-
-.btn-fijo{
-    width: 130px;
-    height: 40px;
-    font-size: 14px;
-    margin-right: 10px;
-    border-radius: 5px;
-    padding: 5px;
-}
-
 
 
 
@@ -448,34 +999,10 @@ ____________________________________
     margin-bottom: 10px;
 }
 
-.botones-accion{
-    margin: 10px 50px 10px 50px;
-}
 
 
 
-@media (max-width: 768px) {
-    .contenedor{
-        flex-direction: column;
-    }
 
-    .aside-menu{
-        width: 100%;
-        min-width: unset;
-        max-width: 100%;
-    }
-
-    .banner{
-        padding: 0 15px;
-    }
-
-    .logo{
-        width: 110px;
-       
-    }
-}
-
-    
 
 
 

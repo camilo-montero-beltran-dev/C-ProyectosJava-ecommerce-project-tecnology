@@ -15,6 +15,7 @@ Desarrollado por **Camilo Montero**
 API REST de administración (backoffice), compuesta por un backend en Spring Boot, una interfaz web en Angular/TypeScript, y una base de datos MySQL. Incluye almacenamiento de imágenes en Amazon S3.
 
 Este repositorio es el **panel de gestión** del ecosistema: administra los datos maestros del negocio (productos, marcas, categorías, inventario, usuarios y roles). La tienda de cara al cliente (catálogo público, carrito, checkout y órdenes) se construirá como una **API de ecommerce independiente**, que consumirá este backoffice como fuente de datos del catálogo — ver [Próximas mejoras](#-próximas-mejoras).
+<<<<<<< HEAD
 
 
 
@@ -23,6 +24,8 @@ Diagrama relacional
 <img width="946" height="1051" alt="bd" src="https://github.com/user-attachments/assets/7d75fc16-e5d7-41b2-a364-ee09e58ace27" />
 
 <br>
+=======
+>>>>>>> a75fcaf (Actualizacion frontend estilo mas moderno)
 
 ---
 
@@ -39,12 +42,19 @@ Diagrama relacional
 - 🧱 Backend con arquitectura por capas (`controller`, `service`, `dao`, `dto`, `entity`, `mapper`).
 - 🗄 Script SQL de base de datos incluido.
 - 🖥️ Frontend desacoplado en Angular, con interceptor de token JWT y adapters para normalizar respuestas del backend.
+<<<<<<< HEAD
 
 ---
 
 <img width="1877" height="916" alt="image" src="https://github.com/user-attachments/assets/634cc0d5-dc8c-4a35-aaf2-7937d2f947de" />
 
 
+=======
+- 🧑‍💼 Gestión de clientes (información de compradores, separada de los usuarios administrativos del sistema).
+
+---
+
+>>>>>>> a75fcaf (Actualizacion frontend estilo mas moderno)
 ## 📁 Estructura del repositorio
 ```
 ecommerce-tecnology/
@@ -157,4 +167,7 @@ Este proyecto está bajo la Licencia MIT.
 
 ## 🤝 Contacto
 Camilo Montero
+<<<<<<< HEAD
 
+=======
+>>>>>>> a75fcaf (Actualizacion frontend estilo mas moderno)

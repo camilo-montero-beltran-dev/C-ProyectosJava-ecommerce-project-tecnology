@@ -16,7 +16,7 @@ export class MarcaService{
 
     constructor (private http: HttpClient){}
 
-    // Metodo para obtener todas las cmarcas del backend
+    // Metodo para obtener todas las marcas del backend
     obtenerMarcas(): Observable<Marca[]>{
         return this.http.get<Marca[]>(this.apiUrl);
     }

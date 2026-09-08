@@ -23,6 +23,7 @@ public class ProductoDto {
     private Integer stock;
     private LocalDateTime fechaRegistro;
     private LocalDateTime fechaActualizacion;
+    private Boolean activo;
 
     // Datos relacionados con la categoria del producto
     private Long idCategoria;
@@ -48,6 +49,7 @@ public class ProductoDto {
         this.nombreProducto = producto.getNombreProducto();
         this.descripcion = producto.getDescripcion();
         this.precio = producto.getPrecio();
+        this.activo = producto.getActivo();
         this.stock = producto.getStock();
         this.fechaRegistro = producto.getFechaRegistro();
         this.fechaActualizacion = producto.getFechaActualizacion();
@@ -123,6 +125,14 @@ public class ProductoDto {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public LocalDateTime getFechaRegistro() {

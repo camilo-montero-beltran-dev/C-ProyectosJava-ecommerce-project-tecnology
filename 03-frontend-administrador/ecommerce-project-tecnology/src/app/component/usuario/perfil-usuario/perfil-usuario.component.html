@@ -1,42 +1,139 @@
-<div *ngIf="usuario" class="detalles-container">
-  <h2 class="detalles-titulo">
-    <strong>PERFIL DE: </strong> {{ usuario.nombreUsuario }}
-  </h2>
+<div *ngIf="usuario" class="perfil-container">
 
-  <div class="detalles-header">
-    <img class="detalles-imagen" [src]="usuario.imagenUsuario?.urlImagen" alt="Foto de usuario">
+  <!-- CABECERA DEL PERFIL-->
+  <div class="perfil-header">
 
-    <div class="detalles-principales">
-      <p><strong>Correo electronico:</strong> {{ usuario.correo }}</p>
-      <p><strong>Fecha de registro:</strong> {{ usuario.fechaRegistro | date }}</p>
-      <p><strong>Rol:</strong> {{usuario.rol.nombreRol}}</p>
-      <p><strong>Estado de cuenta: </strong> <strong>{{usuario.estadoUsuario.nombreEstado}}</strong></p>
+  <div class="perfil-identidad">
+
+    <img 
+    class="perfil-avatar" 
+    [src]="usuario.imagenUsuario?.urlImagen" 
+    alt="Foto de usuario">
+
+    <div>
+
+      <span class="perfil-label">  PERFIL DE USUARIO</span>
+
+      <h2>
+        {{ usuario.nombreUsuario}}
+      </h2>
+
+      <p>
+        {{ usuario.correo}}
+      </p>
+
     </div>
 
   </div>
 
+  <button 
+    class="btn btn-primary btn-guardar" 
+    [routerLink]="['/modificarUsuario', usuario.idUsuario]"> 
+    MODIFICAR
+  </button>
+  
 
-<div *ngIf="usuario" class="detalles-especificos">
-  <h3>Datos personales</h3>
-  <p><strong>Nombres Persona</strong> {{usuario.persona.nombresPersona}}</p>
-  <p><strong>Apellidos: </strong> {{usuario.persona.apellidosPersona}}</p>
-  <p><strong>Tipo Documento:</strong> {{usuario.persona.tipoDocumento}}</p>
-  <p><strong>Numero Documento:</strong> {{usuario.persona.numeroDocumento}}</p>
-  <p><strong>Fecha Nacimiento:</strong> {{usuario.persona.fechaNacimiento}}</p>
-  <p><strong>Genero:</strong> {{usuario.persona.sexo}}</p>
-  <p><strong>Telefono:</strong> {{usuario.persona.telefono}}</p>
-  <p><strong>Correo Secundario:</strong> {{usuario.persona.correoSecundario}}</p>
-  <p><strong>Direccion:</strong> {{usuario.persona.direccion}}</p>
-  <p><strong>Ciudad:</strong> {{usuario.persona.ciudad}}</p>
-  <p><strong>Pais:</strong> {{usuario.persona.pais}}</p>
+  <!-- IMFORMACIÓN DE CUENTA -->
+
+  <div class="perfil-grid">
+
+      <div class="perfil-card">
+        
+        <span>ROL</span>
+        <strong>{{usuario.rol.nombreRol}}</strong> 
+      
+      </div>
+
+    
+      <div class="perfil-card">
+        
+        <span>ESTADO</span>
+        <strong class="estado-activo">
+          {{usuario.estadoUsuario.nombreEstado}}
+        </strong>
+      
+      </div>
+
+
+
+      <div class="perfil-card">
+        
+        <span>FECHA DE REGISTRO</span>
+
+        <strong>
+          {{ usuario.fechaRegistro | date: 'dd/mm/yyyy' }}
+        </strong> 
+      
+      </div>
+
+  </div>
+
+  </div>
+
+
+  <!-- DATOS PERSONALES -->
+
+ <div *ngIf="usuario" class="perfil-seccion"> 
+  
+  
+  <div class="perfil-seccion-header">
+    <h3>Datos personales</h3>
+    <span>Información del usuario</span>
+  
+  </div>
+  
+  <div class="datos-grid">
+
+  <div class="dato">
+    <span>Nombres Persona</span> 
+    <strong>{{usuario.persona.nombresPersona}}</strong>
+  </div>
+
+  <div class="dato">
+    <span>Apellidos: </span> 
+    <strong>{{usuario.persona.apellidosPersona}}</strong>
+  </div>
+
+  <div class="dato">
+    <span>Tipo Documento:</span> 
+    <strong>{{usuario.persona.tipoDocumento}}</strong>
+  </div>
+
+  <div class="dato">
+    <span>Numero Documento:</span> 
+    <strong>{{usuario.persona.numeroDocumento}}</strong>
+  </div>
+
+  <div class="dato">
+    <span>Fecha Nacimiento:</span> 
+    <strong>{{usuario.persona.fechaNacimiento}}</strong>
+  </div>
+
+  <div class="dato">
+    <span>Genero:</span>
+     <strong>{{usuario.persona.sexo}}</strong>
+    </div>
+
+  <div class="dato">
+    <span>Telefono:</span> 
+    <strong>{{usuario.persona.telefono}}</strong>
+  </div>
+
+  <div class="dato"><span>Correo Secundario:</span> <strong>{{usuario.persona.correoSecundario}}</strong></div>
+
+  <div class="dato"><span>Direccion:</span> <strong>{{usuario.persona.direccion}}</strong></div>
+
+  <div class="dato"><span>Ciudad:</span> <strong>{{usuario.persona.ciudad}}</strong></div>
+
+  <div class="dato"><span>Pais:</span> <strong>{{usuario.persona.pais}}</strong></div>
+
+  </div>
 </div>
 
-    <button class="btn btn-primary btn-guardar" [routerLink]="['/modificarUsuario', usuario.idUsuario]">
-      MODIFICAR
-    </button>
+
 
 
 </div>
-<div *ngIf="!usuario">
+<div *ngIf="!usuario" class="loading">
   <p>Cargando perfil...</p>
 </div>

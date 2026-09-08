@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class AmazonS3ServiceImpl implements AmazonS3Service {
                 .bucket(bucketName)
                 .key(nombreArchivo)
                 .contentType(archivo.getContentType())
+                //.acl(ObjectCannedACL.PUBLIC_READ)
                 .build();
 
         // Subir archivo a S3

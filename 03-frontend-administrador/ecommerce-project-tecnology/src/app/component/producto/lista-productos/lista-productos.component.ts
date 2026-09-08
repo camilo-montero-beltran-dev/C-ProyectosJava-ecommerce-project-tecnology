@@ -75,31 +75,46 @@ import { trigger, transition, style , animate} from "@angular/animations";
     }
 
     
-    confirmarEliminar(producto:   Producto) {
+    confirmarEliminar(producto:   Producto) : void {
 
-        // Forzar alerta temporal
-        if(this.isBrowser){
-            alert('Boton oara eliminar producto' + producto.nombreProducto)
-        }
+
+        console.log('Producto seleccionado para eliminar', producto);
+        console.log('ID:', producto.idProducto);
+
         this.productoAEliminar = producto;
         this.mostrarModal = true;
     }
 
     // eliminar producto por id
 
-    eliminarProducto() {
+    eliminarProducto(): void {
+
         if (this.productoAEliminar && this.productoAEliminar.idProducto !== undefined) {
-            this.productoService.eliminarProducto(this.productoAEliminar.idProducto)
+
+
+            const  idProducto = this.productoAEliminar.idProducto;
+
+            console.log('Eliminado producto con ID:', idProducto)
+
+
+            this.productoService.eliminarProducto(idProducto)
                 .subscribe({ 
+                    
                     next: ()=>{
+
+                        console.log('pRODUCRO ELIMINADO CORRECTAMENTE')
+
                     this.productos = this.productos.filter(
-                        p => p.idProducto != this.productoAEliminar?.idProducto
+                        p => p.idProducto != idProducto
                     );
+
                     this.mostrarModal = false;
                     this.productoAEliminar = null;
                     },
                     error:(err) =>{
+
                         console.log('Error al eliminar producto', err)
+
                         this.mostrarModal = false;
                         this.productoAEliminar = null;
                     }

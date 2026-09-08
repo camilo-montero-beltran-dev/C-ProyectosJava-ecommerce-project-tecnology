@@ -51,6 +51,21 @@ public class ProductoController {
     }
 
 
+    @GetMapping("/productosPaginadosCategoriaxz/{idCategoria}")
+    public ResponseEntity<Page<ProductoDto>>listarProductosCategoriaPaginados(
+            @PathVariable Long idCategoria,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size)
+    {
+
+        Pageable pageable = PageRequest.of(page, size , Sort.by("nombreProducto").ascending());
+        Page<ProductoDto>productos=productoService.obtenerProductosPorCategoria(idCategoria, pageable);
+
+        return ResponseEntity.ok(productos);
+    }
+
+
+
     @GetMapping("/detallesProducto/{idProducto}")
     public ResponseEntity<ProductoDto> obtenerProductoPorId(@PathVariable Long idProducto){
         return  ResponseEntity.ok(productoService.obtenerProductoConImagenes(idProducto));

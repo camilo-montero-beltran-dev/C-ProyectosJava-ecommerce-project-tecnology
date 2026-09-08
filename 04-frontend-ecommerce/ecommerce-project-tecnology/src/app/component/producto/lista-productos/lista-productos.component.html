@@ -1,0 +1,40 @@
+<div>
+
+    <h2>CATALOGO DE PRODUCTOS</h2>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Descripcion</th>
+            <th>Categoria</th>
+            <th>Marca</th>
+            <th>Fecha de registro</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let producto of productos">
+            <td>{{producto.codigoProducto}}</td>
+            <td>
+
+                <img *ngIf="producto.imagenesProducto && producto.imagenesProducto.length > 0"
+                [src]="producto.imagenesProducto[0].urlImagen"
+                alt="Imagenes producto">
+            </td>
+            <td>{{producto.nombreProducto}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.categoria.nombreCategoria}}</td>
+            <td>{{producto.marca.nombreMarca}}</td>
+            <td>{{producto.fechaRegistro}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+

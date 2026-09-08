@@ -1,0 +1,29 @@
+<section class="categorias-wrapper">
+
+  <button class="nav-btn left" (click)="prev()">
+   &lt;
+  </button>
+
+  <div class="categorias-viewport">
+    <div class="categorias-slider"
+    [style.transform]="'translateX(-' + currentIndex * itemWidth + '%)'">
+
+    <div class="categoria-card" *ngFor="let categoria of categorias">
+      
+      <img class="categorias-images"
+      *ngIf="categoria.imagenesCategoria.length > 0"
+      [src]="categoria.imagenesCategoria[0].urlImagen"
+      alt="imagen categoria"
+      
+
+      />
+    </div>
+
+    </div>
+  </div>
+
+  <button class="nav-btn right" (click)="next()">
+    &gt;
+  </button>
+
+</section>

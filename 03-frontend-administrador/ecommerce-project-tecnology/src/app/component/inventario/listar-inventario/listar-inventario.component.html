@@ -38,12 +38,12 @@
             <td>{{producto.fechaRegistro}}</td>
             <td>{{producto.stock}}</td>
             <td>
-                <div class="botones-accion">
+                <div>
                     <button class="btn btn-primary btn-fijo" [routerLink]="['/detallesProducto', producto.idProducto]">
                         Visualizar</button>
                 </div>
 
-                 <div class="botones-accion">
+                 <div>
                     <button class="btn btn-primary btn-fijo" [routerLink]="['/registrarMovimiento/', producto.idProducto]">
                         Ingresar stok</button>
                 </div>
@@ -52,7 +52,7 @@
     </tbody>
 </table>
 
-<div class="paginacion botones-accion">
+<div class="paginacion">
     <button class="btn btn-primary btn-fijo" (click)="cambiarPagina(paginaActual -1)"
         [disabled]="paginaActual ===0">Anterior</button>
     <span>Pàgina {{ paginaActual +1 }} de {{ totalPaginas }}</span>

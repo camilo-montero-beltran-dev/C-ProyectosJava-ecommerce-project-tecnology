@@ -75,6 +75,15 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
+    public Page<Producto> obtenerTodosProductosActivosTienda(Pageable pageable) {
+
+        // Retonar una nueva página con la misma informacion de paginación
+        return productoRepository.findByActivoTrueAndStockGreaterThan(0, pageable);
+
+
+    }
+
+    @Override
     public Page<ProductoDto> obtenerTodosProductosConImagenesPaginados(Pageable pageable) {
 
         // Obtener página de usuarios desdel el repositorio
@@ -122,6 +131,39 @@ public class ProductoServiceImpl implements ProductoService {
         // Mapear producto a DTO
         return productoMapper.mappearProductoDto(producto, imagenesPorProducto,imagenesPorCategoria, imagenesPorMarca );
     }
+
+    @Override
+    @Transactional
+    public Page<ProductoDto> obtenerProductosPorCategoria(Long idCategoria , Pageable pageable) {
+
+        // Obtener página de productos desd el el repositorio
+        Page<Producto> productosCategoriaPage = productoRepository.findByCategoria_IdCategoria(idCategoria , pageable);
+
+        // Extraer productos
+        List<Producto> productos =  productosCategoriaPage.getContent();
+
+        // Obtener listado IDs de Marcas Categorias y Productos
+        List<Long> idsProducto  =  productos.stream().map(Producto :: getIdProducto).collect(Collectors.toList());
+        List<Long> idsCategoria = productos.stream().map(p -> p.getCategoria().getIdCategoria()).distinct().collect(Collectors.toList());
+        List<Long>idsMarca= productos.stream().map(p -> p.getMarca().getIdMarca()).distinct().collect(Collectors.toList());
+
+        //Cargar imagenes en bloque de cada listado
+        Map<Long, List<Imagen>> imagenesPorProducto = imagenService.obtenerImagenesDeEntidades(TipoEntidad.PRODUCTO, idsProducto);
+        Map<Long, List<Imagen>> imagenesPorCategoria = imagenService.obtenerImagenesDeEntidades(TipoEntidad.CATEGORIA, idsCategoria);
+        Map<Long, List<Imagen>> imagenesPorMarca =  imagenService.obtenerImagenesDeEntidades(TipoEntidad.MARCA, idsMarca);
+
+        // Convertir los productos a DTO
+
+        List<ProductoDto> productosDto= productos.stream()
+                .map( p -> productoMapper.mappearProductoDto(p, imagenesPorProducto,imagenesPorCategoria,imagenesPorMarca))
+                .toList();
+
+        // Retonar una nueva página con la misma informacion de paginación
+        return new PageImpl<>(productosDto, pageable ,productosCategoriaPage.getTotalElements());
+
+    }
+
+
 
     @Override
     public List<Producto> buscarPorCodigoONombre(String query) {
@@ -209,44 +251,6 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
 
-    // Convertir entidad Producto a Dto
-    private ProductoDto convertirADto(Producto producto) {
-
-        ProductoDto productoDto = new ProductoDto();
-
-        productoDto.setIdProducto(producto.getIdProducto());
-        productoDto.setCodigoProducto(producto.getCodigoProducto());
-        productoDto.setNombreProducto(producto.getNombreProducto());
-        productoDto.setDescripcion(producto.getDescripcion());
-        productoDto.setPrecio(producto.getPrecio());
-        productoDto.setFechaRegistro(producto.getFechaRegistro());
-        productoDto.setFechaActualizacion(producto.getFechaActualizacion());
-
-
-        productoDto.setIdCategoria(producto.getCategoria().getIdCategoria());
-        productoDto.setNombreCategoria(producto.getCategoria().getNombreCategoria());
-
-        productoDto.setIdMarca(producto.getMarca().getIdMarca());
-        productoDto.setNombreMarca(producto.getMarca().getNombreMarca());
-
-        return productoDto;
-    }
-
-
-    //    @Override
-//    @Transactional
-//    public List<Producto> obtenerProductosPorCategoria(Long idCategoria) {
-//
-//        if (!categoriaRepository.existsById(idCategoria)){
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Categoria no encontrada");
-//        }
-//
-//        List<Producto> productos = productoRepository.findByCategoria_IdCategoria(idCategoria);
-//        productos.forEach(this::cargarImagenesParaProducto);
-//
-//        return productos;
-//   }
-//
 //    @Override
 //    @Transactional
 //    public List<Producto> obtenerProductosPorMarca(Long idMarca) {
@@ -261,5 +265,9 @@ public class ProductoServiceImpl implements ProductoService {
 //
 //        return productos;
 //    }
+
+
+
+
 
 }

@@ -8,6 +8,7 @@ public class ProductoActualizarDto {
     private String nombreProducto;
     private String descripcion;
     private Double precio;
+    private Boolean activo;
 
     // Datos relacionados con la categoria del producto
     @NotNull(message=" idCategoria es obligatorio")
@@ -40,6 +41,14 @@ public class ProductoActualizarDto {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public Long getIdCategoria() {

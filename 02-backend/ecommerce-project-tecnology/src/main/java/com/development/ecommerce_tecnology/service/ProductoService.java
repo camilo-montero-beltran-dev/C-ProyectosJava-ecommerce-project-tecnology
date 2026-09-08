@@ -17,7 +17,11 @@ public interface ProductoService {
 
     List<ProductoDto> obtenerTodosProductosConImagenes();
 
+    Page<Producto> obtenerTodosProductosActivosTienda(Pageable pageable);
+
     Page<ProductoDto> obtenerTodosProductosConImagenesPaginados(Pageable pageable);
+
+    Page<ProductoDto> obtenerProductosPorCategoria(Long idCategoria, Pageable pageable);
 
     ProductoDto crearProductoConImagenes(ProductoCrearDto productoDto)throws IOException;
 
@@ -27,7 +31,9 @@ public interface ProductoService {
 
     List<Producto> buscarPorCodigoONombre(String query);
 
-//    List<Producto> obtenerProductosPorCategoria( Long idCategoria);
+
+
+
 //
 //    List<Producto> obtenerProductosPorMarca(Long idMarca);
 

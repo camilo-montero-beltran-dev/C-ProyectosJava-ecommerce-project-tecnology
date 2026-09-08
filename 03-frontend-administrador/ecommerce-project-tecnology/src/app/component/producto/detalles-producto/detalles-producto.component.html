@@ -31,13 +31,13 @@
     <p><strong>Fecha de registro:</strong> {{ producto.fechaRegistro }}</p>
     <p><strong>Fecha de actualizacion:</strong> {{ producto.fechaActualizacion }}</p>
 
-    <p><strong>Categoria:</strong> {{ producto.categoria.nombreCategoria }}</p>
-    <img class="detalles-imagen"
-      *ngIf="producto.categoria.imagenesCategoria && producto.categoria.imagenesCategoria.length > 0"
-      [src]="producto.categoria.imagenesCategoria[0].urlImagen" alt="Imagen del la categioria">
+    <p><strong>categoria</strong> {{ producto.categoria.nombreCategoria}}</p>
+    <img class="detalles-imagen-especificaciones" *ngIf="producto.categoria.imagenesCategoria && producto.categoria.imagenesCategoria.length > 0"
+      [src]="producto.categoria.imagenesCategoria[0].urlImagen" alt="Imagen de la categoria">
+
 
     <p><strong>Marca</strong> {{ producto.marca.nombreMarca}}</p>
-    <img class="detalles-imagen" *ngIf="producto.marca.imagenesMarca && producto.marca.imagenesMarca.length > 0"
+    <img class="detalles-imagen-especificaciones" *ngIf="producto.marca.imagenesMarca && producto.marca.imagenesMarca.length > 0"
       [src]="producto.marca.imagenesMarca[0].urlImagen" alt="Imagen de la marca">
 
   </div>

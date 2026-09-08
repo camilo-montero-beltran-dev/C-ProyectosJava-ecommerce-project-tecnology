@@ -33,6 +33,9 @@ public class Producto {
     @Column(name = "stock", nullable = false)
     private Integer stock;
 
+    @Column(name = "activo", nullable = false)
+    private Boolean activo = true;
+
     @Column(name = "fecha_registro")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fechaRegistro;
@@ -104,6 +107,14 @@ public class Producto {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public LocalDateTime getFechaRegistro() {

@@ -112,7 +112,6 @@ public class CategoriaServiceImpl implements CategoriaService {
                 })
                 .collect(Collectors.toList());
     }
-
     // Metodo para crear una nueva categoria con su respectiva imagen
 
     @Override

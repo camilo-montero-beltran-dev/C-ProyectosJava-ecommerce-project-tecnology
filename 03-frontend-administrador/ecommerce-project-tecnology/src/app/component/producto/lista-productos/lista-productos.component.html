@@ -1,10 +1,14 @@
 
 
 <div class="tabla-encabezado">
-    <h2>CATALOGO DE PRODUCTOS</h2>
+    <h2>Catálogo de Productos</h2>
+
+    <p class="subtitulo">Administra los productos de tu tienda, visualiza, agrega o elimina productos según sea necesario.</p>
+    
+
     <button class="btn btn-primary btn-fijo btn-crear"
             routerLink="/agregarProducto" 
-            routerLinkActive="active-link" >Agregar producto
+            routerLinkActive="active-link" > Agregar producto
     </button>
 </div>
 
@@ -14,10 +18,10 @@
     <tr>
         <th>Codigo</th>
         <th>Imagen</th>
-        <th>producro </th>
+        <th>Producto</th>
         <th>Descripcion</th>
         <th>Categoria</th>
-        <th>Marca</th>        
+        <th>Marca</th>       
         <th>Fecha Registro</th>
         <th>Acciones</th>
    
@@ -50,7 +54,7 @@
     </tbody>
 </table>
 
-<div class="paginacion botones-accion">
+<div class="paginacion">
     <button class="btn btn-primary btn-fijo" (click)="cambiarPagina(paginaActual -1)"
         [disabled]="paginaActual ===0">Anterior</button>
     <span>Pàgina {{ paginaActual +1 }} de {{ totalPaginas }}</span>
@@ -62,11 +66,22 @@
 <!-- Modal de confirmacion-->
 
 <div class="modal" *ngIf="mostrarModal">
+
     <div class="modal-content">
+
         <h3>Confirmar Eliminaciòn</h3>
-        <p>¿Seguro que quieres eliminar el producto {{productoAEliminar?.nombreProducto}}</p>
-        <button class="btn btn-danger btn-fijo-sesion"(click)="eliminarProducto()">Si, eliminar</button>
-        <button class="btn btn-primary btn-fijo-sesion"(click)="cancelarEliminar()">Cancelar</button>
+
+        <p>
+            ¿Seguro que quieres eliminar el producto 
+            {{productoAEliminar?.nombreProducto}}
+        </p>
+
+        <button type="button" class="btn btn-danger btn-fijo-sesion"(click)="eliminarProducto()">Si, eliminar</button>
+        
+        <button type="button" class="btn btn-primary btn-fijo-sesion"(click)="cancelarEliminar()">Cancelar</button>
+
+
+        
     </div>
 
 </div>
