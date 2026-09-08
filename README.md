@@ -18,8 +18,6 @@ Este repositorio es el **panel de gestión** del ecosistema: administra los dato
 
 
 
-![Uploading image.png…]()
-
 Diagrama relacional
 
 <img width="946" height="1051" alt="bd" src="https://github.com/user-attachments/assets/7d75fc16-e5d7-41b2-a364-ee09e58ace27" />
