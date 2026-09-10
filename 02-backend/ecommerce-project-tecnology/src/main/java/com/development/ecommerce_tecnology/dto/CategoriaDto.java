@@ -21,6 +21,10 @@ public class CategoriaDto {
 
     }
 
+    public CategoriaDto() {
+
+    }
+
     public Long getIdCategoria() {
         return idCategoria;
     }

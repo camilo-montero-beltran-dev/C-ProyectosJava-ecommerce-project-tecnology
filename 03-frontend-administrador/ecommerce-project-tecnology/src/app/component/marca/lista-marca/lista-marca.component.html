@@ -1,1 +1,66 @@
-<p>lista-marca works!</p>
+
+
+<div class="tabla-encabezado">
+    <h2>Catálogo de Marcas</h2>
+
+    <button class="btn btn-primary btn-fijo btn-crear"
+            routerLink="/crearMarca" 
+            routerLinkActive="active-link" > Agregar Marca
+    </button>
+</div>
+
+
+<table >
+    <thead>
+    <tr>
+        <th>IdMarca</th>
+        <th>Marca</th>
+        <th>descripcion</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+
+    </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let marca of marcas">
+        <td>{{marca.idMarca}}</td>
+
+        <td>
+             <img *ngIf="marca.imagenesMarca && marca.imagenesMarca.length > 0 " 
+             [src]="marca.imagenesMarca[0].urlImagen" 
+             alt="Imagenes marca"
+             class="listado-img">
+        </td>
+        
+    
+        <td>{{marca.nombreMarca}}</td>
+
+        <td> {{marca.descripcion}} </td>
+
+        
+        <td>
+            
+            <button class="btn btn-danger btn-fijo" (click)="confirmarEliminar(marca)">Eliminar </button>
+        </td>
+
+    </tr> 
+    </tbody>
+</table>
+
+<div class="paginacion">
+    <button class="btn btn-primary btn-fijo" (click)="cambiarPagina(paginaActual -1)"
+        [disabled]="paginaActual ===0">Anterior</button>
+    <span>Pàgina {{ paginaActual +1 }} de {{ totalPaginas }}</span>
+    <button class="btn btn-primary btn-fijo" (click)="cambiarPagina(paginaActual +1)"
+        [disabled]="paginaActual + 1 >= totalPaginas">Siguiente Pagina</button>
+</div>
+
+
+<!-- Modal de confirmacion-->
+
+
+
+
+
+

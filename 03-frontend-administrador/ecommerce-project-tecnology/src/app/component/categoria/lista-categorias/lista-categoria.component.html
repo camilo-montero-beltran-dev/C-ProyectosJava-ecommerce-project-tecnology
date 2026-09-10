@@ -1,22 +1,64 @@
-<div class="d-flex justify-content-end mb-3">
-    <button class="btn btn-primary btn-fijo"> Crear nueva Categoria
-</button>
 
+
+<div class="tabla-encabezado">
+    <h2>Catálogo de Categorias </h2>
+
+    <button class="btn btn-primary btn-fijo btn-crear"
+            routerLink="/crearCategoria" 
+            routerLinkActive="active-link" > Agregar categoria
+    </button>
 </div>
 
-<div class="contenedor">
-  <div *ngFor="let categoria of categorias" class="categoria-item">
-    <div *ngIf="categoria.imagenesCategoria">
-      
-      <img *ngFor="let imagen of categoria.imagenesCategoria" 
-      [src]="imagen.urlImagen" 
-      [alt]="categoria.nombreCategoria"
-      class="imagen-categoria">  
-    </div>
-    <div >
-      <button class="btn btn-primary btn-fijo" >Ver productos</button>
-      <button class="btn btn-warning btn-fijo" >Editar Cátegoria</button>
-      <button class="btn btn-danger btn-fijo" >Eliminar Cátegoria</button>
-    </div>
+
+<table >
+    <thead>
+    <tr>
+        <th>IdCategoria</th>
+        <th>Categoria</th>
+        <th>descripcion</th>
+        <th>prefijoCategoria</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+
+    </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let categoria of categorias">
+        <td>{{categoria.idCategoria}}</td>
+    
+        <td>{{categoria.nombreCategoria}}</td>
+
+        <td> {{categoria.descripcion}} </td>
+
+        <td> {{categoria.prefijoCategoria}} </td>
+
+        <td>
+             <img *ngIf="categoria.imagenesCategoria && categoria.imagenesCategoria.length > 0 " 
+             [src]="categoria.imagenesCategoria[0].urlImagen" 
+             alt="Imagenes categoria"
+             class="listado-img">
+        </td>
+        
+
+        
+        <td>
+            
+            <button class="btn btn-danger btn-fijo" (click)="confirmarEliminar(categoria)">Eliminar </button>
+        </td>
+
+    </tr> 
+    </tbody>
+</table>
+
+<div class="paginacion">
+    <button class="btn btn-primary btn-fijo" (click)="cambiarPagina(paginaActual -1)"
+        [disabled]="paginaActual ===0">Anterior</button>
+    <span>Pàgina {{ paginaActual +1 }} de {{ totalPaginas }}</span>
+    <button class="btn btn-primary btn-fijo" (click)="cambiarPagina(paginaActual +1)"
+        [disabled]="paginaActual + 1 >= totalPaginas">Siguiente Pagina</button>
 </div>
+
+
+<!-- Modal de confirmacion-->
 

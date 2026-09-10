@@ -6,11 +6,18 @@ import com.development.ecommerce_tecnology.dto.ImagenDto;
 import com.development.ecommerce_tecnology.dto.MarcaCrearDto;
 import com.development.ecommerce_tecnology.dto.MarcaDto;
 
+import com.development.ecommerce_tecnology.dto.ProductoDto;
 import com.development.ecommerce_tecnology.entity.Imagen;
 import com.development.ecommerce_tecnology.entity.Marca;
+import com.development.ecommerce_tecnology.entity.Producto;
 import com.development.ecommerce_tecnology.enums.TipoEntidad;
+import com.development.ecommerce_tecnology.mapper.MarcaMapper;
+import com.development.ecommerce_tecnology.mapper.ProductoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,12 +37,14 @@ public class MarcaServiceImpl implements MarcaService{
     // Logger para registrar eventos importantes o mensajes de depuración
     private static final Logger logger = LoggerFactory.getLogger(UsuarioServiceImpl.class);
 
+    private final MarcaMapper marcaMapper;
     private final MarcaRepository marcaRepository;
     private final ImagenService imagenService;
     private final AmazonS3Service amazonS3Service;
 
-    public MarcaServiceImpl(MarcaRepository marcaRepository, ImagenRepository imagenRepository, ImagenService imagenService, AmazonS3Service amazonS3Service) {
+    public MarcaServiceImpl(MarcaRepository marcaRepository, ImagenRepository imagenRepository, MarcaMapper marcaMapper, ImagenService imagenService, AmazonS3Service amazonS3Service) {
         this.marcaRepository = marcaRepository;
+        this.marcaMapper = marcaMapper;
         this.imagenService = imagenService;
         this.amazonS3Service = amazonS3Service;
 
@@ -104,6 +113,28 @@ public class MarcaServiceImpl implements MarcaService{
                     return new MarcaDto(marca,imagenMarcaDtos);
 
                 }).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<MarcaDto> obtenerTodasMarcasConImagenesPaginadas(Pageable pageable) {
+
+        // Obtener página de marcas desd el el repositorio
+        Page<Marca> marcaPage = marcaRepository.findAll(pageable);
+
+        // Extraer marcas
+        List<Marca> marcas =  marcaPage.getContent();
+
+        List<Long> idsMarca  =  marcas.stream().map(Marca :: getIdMarca).collect(Collectors.toList());
+
+        //Cargar imagenes en bloque de cada listado
+        Map<Long, List<Imagen>> imagenesPorMarca = imagenService.obtenerImagenesDeEntidades(TipoEntidad.MARCA, idsMarca);
+
+        // Convertir los productos a DTO
+        List<MarcaDto> marcasDto= marcas.stream()
+                .map( m -> marcaMapper.mappearMarcaDto(m,imagenesPorMarca))
+                .toList();
+
+        return new PageImpl<>(marcasDto, pageable , marcaPage.getTotalElements());
     }
 
 

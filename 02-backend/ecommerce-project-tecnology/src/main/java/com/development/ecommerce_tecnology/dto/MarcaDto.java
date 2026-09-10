@@ -9,15 +9,21 @@ public class MarcaDto {
     private Long idMarca;
     private String nombreMarca;
     private String descripcion;
-    private List<ImagenDto> imagenesMarcaDto;
+
+    private List<ImagenDto> imagenesMarca;
 
     public MarcaDto(Marca marca, List<ImagenDto> imagenesMarcaDto) {
 
         this.idMarca = marca.getIdMarca();
         this.nombreMarca = marca.getNombreMarca();
         this.descripcion = marca.getDescripcion();
-        this.imagenesMarcaDto = imagenesMarcaDto;
-        this.descripcion = descripcion;
+        this.imagenesMarca = imagenesMarcaDto;
+
+
+    }
+
+    public MarcaDto() {
+
     }
 
     public Long getIdMarca() {
@@ -44,11 +50,12 @@ public class MarcaDto {
         this.descripcion = descripcion;
     }
 
-    public List<ImagenDto> getImagenesMarcaDto() {
-        return imagenesMarcaDto;
+    public void setImagenesMarca(List<ImagenDto> imagenesMarca) {
+        this.imagenesMarca = imagenesMarca;
     }
 
-    public void setImagenesMarcaDto(List<ImagenDto> imagenesMarcaDto) {
-        this.imagenesMarcaDto = imagenesMarcaDto;
+    public List<ImagenDto> getImagenesMarcaDto() {
+        return imagenesMarca;
     }
+
 }

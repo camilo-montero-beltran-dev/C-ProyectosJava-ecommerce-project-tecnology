@@ -4,6 +4,10 @@ import com.development.ecommerce_tecnology.dto.*;
 import com.development.ecommerce_tecnology.entity.Marca;
 import com.development.ecommerce_tecnology.enums.TipoEntidad;
 import com.development.ecommerce_tecnology.service.MarcaService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +35,17 @@ public class MarcaController {
     @GetMapping
     public ResponseEntity<List<MarcaDto>>obtenerTodasMarcasConImagenes(){
         return ResponseEntity.ok(marcaService.obtenerTodasMarcasConImagenes());
+    }
+
+    @GetMapping("/marcasPaginadas")
+    public ResponseEntity<Page<MarcaDto>>listarMarcasPaginadas(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size)
+    {
+        Pageable pageable = PageRequest.of(page, size , Sort.by("nombreMarca").ascending());
+        Page<MarcaDto>marcas=marcaService.obtenerTodasMarcasConImagenesPaginadas(pageable);
+
+        return ResponseEntity.ok(marcas);
     }
 
     @PostMapping(value = "/crearMarca" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

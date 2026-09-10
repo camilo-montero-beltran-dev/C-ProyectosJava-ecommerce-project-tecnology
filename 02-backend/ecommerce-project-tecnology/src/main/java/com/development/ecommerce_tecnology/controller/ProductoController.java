@@ -51,7 +51,7 @@ public class ProductoController {
     }
 
 
-    @GetMapping("/productosPaginadosCategoriaxz/{idCategoria}")
+    @GetMapping("/productosPaginadosCategorias/{idCategoria}")
     public ResponseEntity<Page<ProductoDto>>listarProductosCategoriaPaginados(
             @PathVariable Long idCategoria,
             @RequestParam(defaultValue = "0") int page,

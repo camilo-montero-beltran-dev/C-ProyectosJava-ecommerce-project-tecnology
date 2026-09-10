@@ -28,7 +28,7 @@ export class ProductoAdapter implements Adapter<Producto> {
             categoria: {
                 idCategoria: item.idCategoria,
                 nombreCategoria: item.nombreCategoria,
-                descripcionCategoria: item.descripcionCategoria,
+                descripcion: item.descripcionCategoria,
                 prefijoCategoria: item.prefijoCategoria,
                 imagenesCategoria: item.imagenesCategoria
             },
@@ -36,6 +36,7 @@ export class ProductoAdapter implements Adapter<Producto> {
             marca: {
                 idMarca: item.idMarca,
                 nombreMarca: item.nombreMarca,
+                descripcion: item.descripcion,
                 imagenesMarca: item.imagenesMarca
 
             }

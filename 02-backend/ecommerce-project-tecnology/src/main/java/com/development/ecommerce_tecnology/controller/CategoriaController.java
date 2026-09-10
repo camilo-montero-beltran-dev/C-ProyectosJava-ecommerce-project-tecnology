@@ -8,6 +8,10 @@ import com.development.ecommerce_tecnology.dto.CategoriaDto;
 import com.development.ecommerce_tecnology.dto.ImagenCrearDto;
 import com.development.ecommerce_tecnology.enums.TipoEntidad;
 import com.development.ecommerce_tecnology.service.CategoriaService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +34,18 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.obtenerTodasCategoriasConImagenes());
 
     }
+
+    @GetMapping("/categoriaPaginadas")
+    public ResponseEntity<Page<CategoriaDto>>listarCategoriaPaginadas(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size)
+    {
+        Pageable pageable = PageRequest.of(page, size , Sort.by("nombreCategoria").ascending());
+        Page<CategoriaDto>categorias=categoriaService.obtenerTodasCategoriaConImagenesPaginadas(pageable);;
+
+        return ResponseEntity.ok(categorias);
+    }
+
 
     @GetMapping("/detallesProducto/{idCategoria}")
     public ResponseEntity<CategoriaDto> obtenerCategoriaConImagenes(@PathVariable Long idCategoria) {

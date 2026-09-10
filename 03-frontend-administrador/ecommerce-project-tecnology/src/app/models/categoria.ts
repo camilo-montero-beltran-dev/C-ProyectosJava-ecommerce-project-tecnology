@@ -6,7 +6,7 @@ export interface Categoria{
 
     nombreCategoria : string;
     
-    descripcionCategoria :String;
+    descripcion :String;
 
     prefijoCategoria : string;
 

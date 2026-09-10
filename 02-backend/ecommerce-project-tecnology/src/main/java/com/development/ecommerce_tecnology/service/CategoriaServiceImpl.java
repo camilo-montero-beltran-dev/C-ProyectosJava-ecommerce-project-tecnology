@@ -8,9 +8,13 @@ import com.development.ecommerce_tecnology.dto.ImagenDto;
 import com.development.ecommerce_tecnology.entity.Categoria;
 import com.development.ecommerce_tecnology.entity.Imagen;
 import com.development.ecommerce_tecnology.enums.TipoEntidad;
+import com.development.ecommerce_tecnology.mapper.CategoriaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +29,7 @@ import java.util.stream.Collectors;
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 
+    private final CategoriaMapper categoriaMapper;
     // Repositories y servicios necesarios para operaciones sobre imagenes
     private final CategoriaRepository categoriaRepository;
 
@@ -38,9 +43,12 @@ public class CategoriaServiceImpl implements CategoriaService {
     private static final Logger logger = LoggerFactory.getLogger(UsuarioServiceImpl.class);
 
 
+
+
     // Constructor para intecciòn de dependencias
-    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, ImagenRepository imagenRepository, ImagenService imagenService, AmazonS3Service amazonS3Service) {
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, ImagenRepository imagenRepository, CategoriaMapper categoriaMapper, ImagenService imagenService, AmazonS3Service amazonS3Service) {
         this.categoriaRepository = categoriaRepository;
+        this.categoriaMapper = categoriaMapper;
         this.imagenService = imagenService;
         this.amazonS3Service = amazonS3Service;
     }
@@ -112,6 +120,32 @@ public class CategoriaServiceImpl implements CategoriaService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Page<CategoriaDto> obtenerTodasCategoriaConImagenesPaginadas(Pageable pageable) {
+
+        // Obtener página de categorias desde el el repositorio
+        Page<Categoria> categoriaPage = categoriaRepository.findAll(pageable);
+
+        // Extraer categorias
+        List<Categoria> categorias =  categoriaPage.getContent();
+
+        List<Long> idsCategoria  =  categorias.stream().map(Categoria :: getIdCategoria).collect(Collectors.toList());
+
+        //Cargar imagenes en bloque de cada listado
+        Map<Long, List<Imagen>> imagenesPorCategoria = imagenService.obtenerImagenesDeEntidades(TipoEntidad.CATEGORIA, idsCategoria);
+
+        // Convertir los productos a DTO
+        List<CategoriaDto> categoriasDto= categorias.stream()
+                .map( c -> categoriaMapper.mappearCategoriaDto(c,imagenesPorCategoria))
+                .toList();
+
+        return new PageImpl<>(categoriasDto, pageable , categoriaPage.getTotalElements());
+    }
+
+
+
+
     // Metodo para crear una nueva categoria con su respectiva imagen
 
     @Override

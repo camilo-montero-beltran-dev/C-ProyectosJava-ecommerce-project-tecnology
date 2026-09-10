@@ -6,6 +6,8 @@ export interface Marca{
 
     nombreMarca : String;
 
+    descripcion : String;
+
     imagenesMarca? : Imagen[];
 
 }

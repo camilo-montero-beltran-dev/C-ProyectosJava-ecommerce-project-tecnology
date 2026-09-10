@@ -1,5 +1,6 @@
 package com.development.ecommerce_tecnology.dto;
 
+// Clase DTO (Data Transfer Object) Que se utiliza para transferir lo datos necesarios  para un nueva categoria
 public class CategoriaCrearDto {
 
     // Datos relacionados con la categoria

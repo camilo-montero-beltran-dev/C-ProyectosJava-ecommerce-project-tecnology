@@ -35,7 +35,7 @@ const routes: Routes = [ // Se definen las rutas disponibles en la app.
 {   path: 'registrarMovimiento', component: RegistrarMovimientoInventarioBusquedaComponent},
 {   path: 'registrarMovimiento/:idProducto', component: RegistrarMovimientoInventarioPoductoComponent},
 {   path: 'crearCategoria', component: CrearCategoriaComponent},
-{   path: 'listaMarca', component: ListaMarcaComponent},
+{   path: 'listaMarcas', component: ListaMarcaComponent},
 {   path: 'crearMarca', component: CrearMarcaComponent},
 {   path: 'detallesMarca/:idMarca', component: DetallesMarcaComponent},
 {   path: 'listaUsuarios', component: ListaUsuariosComponent }, // Ruta ' /usuarios' muestra listaCategoriaComponent

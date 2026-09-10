@@ -40,7 +40,7 @@ export const routes: Routes = [
 
     {   path: 'crearCategoria', component: CrearCategoriaComponent},
 
-    {   path: 'listaMarca', component: ListaMarcaComponent},
+    {   path: 'listaMarcas', component: ListaMarcaComponent},
 
     {   path: 'crearMarca', component: CrearMarcaComponent},
 
